@@ -1,0 +1,50 @@
+<mat-toolbar color="primary">
+  <a mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" >
+    <mat-icon>menu_books</mat-icon>
+  </a>
+  <span class="navbar-title" routerLink="">Tests de conocimiento</span>
+
+  <span class="example-spacer"></span>
+
+  <button 
+    *ngIf="!authService.isLoggedIn()" 
+    class="btn-login" 
+    routerLink="/auth/login">
+    Inciar Sesión
+  </button>
+
+  <button 
+    *ngIf="!authService.isLoggedIn()" 
+    class="btn-signup ml20 mr10" 
+    routerLink="/auth/register">
+    Registrarse
+  </button>
+
+  <mat-icon 
+    *ngIf="authService.isLoggedIn()"
+    class="link-profile"
+    (click)="goToProfile()"
+    >
+    account_circle
+  </mat-icon>
+  
+  <a (click)="goToProfile()">
+    <span  
+      *ngIf="authService.isLoggedIn()" 
+      class="link-profile ml10 mr10"
+      >
+      <!-- {{usernameNavBar | uppercase}} -->
+      {{username$ | async | uppercase}}
+    </span>
+    
+  </a>
+  <a 
+    *ngIf="authService.isLoggedIn()"
+    mat-icon-button
+    #tooltip="matTooltip"
+    matTooltip="Cerrar Sesión"
+    matTooltipPosition="below"
+    (click)="logout()">
+    <mat-icon >logout</mat-icon>
+  </a>
+</mat-toolbar>

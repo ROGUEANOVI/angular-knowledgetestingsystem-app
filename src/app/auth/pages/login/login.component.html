@@ -1,0 +1,35 @@
+<div class="bootstrap-wrapper">
+  <div class="container">
+    <div class="row mt20">
+      <div class="col-md-6 offset-md-3">
+        
+        <mat-card>
+          <div class="container text-center">
+            <img src="../../../../assets/login.png" alt="login" width="100" height="100">
+
+            <h1 class="text-center">Inicio de Sesión</h1>
+            
+            <form [formGroup]="loginForm" (submit)="login()">
+
+              <mat-form-field class="full-width" appearence="outline">
+                <mat-label>Username o email</mat-label>
+                <input matInput formControlName="usernameOrEmail" placeholder="Ingrese su username o email" autocomplete="email">
+              </mat-form-field>
+    
+              <mat-form-field class="full-width" appearence="outline">
+                <mat-label>Contraseña</mat-label>
+                <input [type]="hidePassword ? 'password' : 'text'" matInput formControlName="password" placeholder="Ingrese la contraseña">
+                <mat-icon matSuffix (click)="hidePassword = !hidePassword">{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </mat-form-field>
+    
+              <div class="container text-center">
+                <button mat-raised-button color="primary">Iniciar Sesión</button>
+                <p class="mt20 mb20">No tienes una cuenta? <a routerLink="/register">Registrate</a></p>
+              </div>
+            </form>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

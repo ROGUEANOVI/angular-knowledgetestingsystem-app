@@ -1,0 +1,89 @@
+<div class="bootstrap-wrapper" *ngIf="!isSend">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-9">
+        <ng-container *ngIf="questionnaires">
+          <h2 class="text-center">{{questionnaires[0].test.title}}</h2>
+        </ng-container>
+
+        <mat-card *ngFor="let questionary of questionnaires; let i = index">
+          <mat-card-content>
+            <p>
+              <b>{{i + 1}})</b><span class="ml10" [innerHTML]="questionary.ask"></span>
+            </p>
+            <div class="container-fluid">
+
+              <div class="row mt20">
+                <div class="col-md-6">
+                  <input [(ngModel)]="questionary.selectedAnswer" type="radio" [value]="questionary.option1" name="{{i}}">
+                  <p> <b>A) </b> {{questionary.option1}}</p>
+                </div>
+                <div class="col-md-6">
+                  <input [(ngModel)]="questionary.selectedAnswer" type="radio" [value]="questionary.option2" name="{{i}}">
+                  <p><b>B) </b> {{questionary.option2}}</p>
+                </div>
+              </div>
+              <div class="row mt20">
+                <div class="col-md-6">
+                  <input [(ngModel)]="questionary.selectedAnswer" type="radio" [value]="questionary.option3" name="{{i}}">
+                  <p><b>C) </b> {{questionary.option3}}</p>
+                </div>
+                <div class="col-md-6">
+                  <input [(ngModel)]="questionary.selectedAnswer" type="radio" [value]="questionary.option4" name="{{i}}">
+                  <p><b>D) </b> {{questionary.option4}}</p>
+                </div>
+              </div>
+
+              <mat-divider></mat-divider>
+            </div>
+          </mat-card-content>
+        </mat-card>
+        <div class="container text-center mt20 mb20">
+          <button mat-raised-button color="primary" (click)="onSubmitQuestionnaires()">Enviar</button>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>
+              Temporizador
+            </mat-card-title>
+            <mat-card-subtitle>
+              El cuestionario se enviará automaticamente cuando el tiempo llegue a 00:00
+            </mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <h2 class="text-center">{{getFormattedTime()}}</h2>
+            <mat-spinner mode="determinate" [value]="(timer/(this.questionnaires!.length * 2 * 60) * 100)"></mat-spinner>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="bootstrap-wrapper" *ngIf="isSend">
+  <div class="container-fluid text-center">
+    <div class="col-md-12">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>
+            <h2 class="text-center">Resultados del Test</h2>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="text-center">
+          <h2>Puntos conseguidos: {{ pointsEarned! }}</h2>
+          <h2>Respuestas Correctas: {{ correctAnswers! }}</h2>
+          <h2>Intentos: {{ attempts! }}</h2>
+        </mat-card-content>
+        <mat-card-actions>
+          <div class="container text-center mt20">
+            <button  mat-raised-button color="primary" class="mr20" (click)="printPage()">Imprimir</button>
+            <button mat-raised-button color="accent" [routerLink]="['/user/tests']">Inicio</button>
+          </div>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>

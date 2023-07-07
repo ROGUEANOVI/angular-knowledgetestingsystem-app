@@ -1,0 +1,47 @@
+<div class="container text-center">
+  <div class="row">
+    <div class="col-md-12">
+      <mat-card-title class="ml20 mt20">
+        <h1>Listado de Tests</h1>
+      </mat-card-title>
+    </div>
+  </div>
+</div>
+
+<div class="boostrap-wrapper">
+  <div class="container-fluid">
+    <div class="row" *ngIf="tests">
+      <div class="col-md-6" *ngFor="let test of tests">
+        <mat-card class="mt20" >
+
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>{{test.title}}</mat-card-title>
+            <mat-card-subtitle>
+              {{test.category!.title}}
+            </mat-card-subtitle>
+          </mat-card-header>
+        
+          <mat-card-content>
+            <p>{{test.category!.description}}</p>
+            <p style="display: inline-block;"> <i>N° preguntas: {{test.numberQuestionnaires}}</i> </p>
+            <p class="ml20" style="display: inline-block;"> <i>Puntos max:  {{test.maximumPoints}}</i></p>
+          </mat-card-content>
+          <mat-card-actions>
+            <div class="container text-center">
+              <button mat-button color="accent" [routerLink]="['/user/tests/instructions', test.testId]">Empezar</button>
+            </div>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+      <div *ngIf="tests.length === 0" class="col-md-12 text-center">
+        <mat-card>
+          <mat-card-content>
+            <h2>No hay tests de esta categoria</h2>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row">
+    <div class="col-8">
+      <mat-card-title class="ml20 mt20">
+        <h1>Listado de Tests</h1>
+      </mat-card-title>
+    </div>
+    <div class="col-4">
+      <div class="container text-center mt20">
+        <button mat-raised-button color="accent" class="mb20" routerLink="/admin/add-test">
+          <mat-icon>add</mat-icon>  
+          Agregar Test
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<mat-card class="mt10" *ngFor="let test of tests">
+
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>{{test.title}}</mat-card-title>
+    <mat-card-subtitle>{{test.category!.title}}</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <mat-card-actions>
+      <button mat-stroked-button color="primary" [routerLink]="['/admin/questionnaires-list/', test.testId, test.title]">Preguntas</button>
+      <button mat-stroked-button color="primary" class="ml20">Puntos Max.: {{test.maximumPoints}}</button>
+      <button mat-stroked-button color="primary" class="ml20">N° de preguntas: {{test.numberQuestionnaires}}</button>
+      <button mat-stroked-button color="primary" class="ml20">Intentos</button>
+      
+      <button mat-flat-button color="primary" class="ml20" [routerLink]="['/admin/edit-test/', test.testId]">
+        <mat-icon>edit</mat-icon>
+        Editar
+      </button>
+      <button mat-flat-button color="warn" class="ml20" (click)="deleteTest(test.testId!)">
+        <mat-icon>delete</mat-icon>
+        Eliminar
+      </button>
+    </mat-card-actions>
+  </mat-card-content>
+  
+</mat-card>

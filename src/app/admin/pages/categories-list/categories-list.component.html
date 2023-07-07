@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="row">
+    <div class="col-8">
+      <mat-card-title class="ml20 mt20">
+        <h1>Listado de Categorias</h1>
+      </mat-card-title>
+    </div>
+    <div class="col-4">
+      <div class="container text-center mt20">
+        <button mat-raised-button color="accent" class="mb20" routerLink="/admin/add-category">
+          <mat-icon>add</mat-icon>          
+          Agregar Categoria
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<mat-card class="mt10" *ngFor="let category of categories">
+  <div class="container">
+    <div class="row">
+      <div class="col-8">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title>{{category.title}}</mat-card-title>
+          <mat-card-subtitle>{{category.description}}</mat-card-subtitle>
+        </mat-card-header>
+      </div>
+      <div class="col-4">
+        <mat-card-content>
+          <mat-card-actions>
+            <button mat-flat-button color="primary" class="ml20" [routerLink]="['/admin/edit-category/', category.categoryId]">
+              <mat-icon>edit</mat-icon>
+              Editar
+            </button>
+            <button mat-flat-button color="warn" class="ml20" (click)="deleteCategory(category.categoryId!)">
+              <mat-icon>delete</mat-icon>
+              Eliminar
+            </button>
+          </mat-card-actions>
+        </mat-card-content>
+      </div>
+    </div>
+  </div>
+ 
+
+  
+
+</mat-card>

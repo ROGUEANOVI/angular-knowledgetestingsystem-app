@@ -1,0 +1,60 @@
+<mat-card>
+  <mat-card-title class="container text-center mt20 mb20">
+    <h1>Editar Test</h1>
+  </mat-card-title>
+  <mat-card-content>
+    <div class="bootstrap-wrapper">
+      <div class="row">
+        <div class="col-md-10 offset-1">
+          <form [formGroup]="testForm" (ngSubmit)="editTest()">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-6">
+                  <mat-form-field class="w100" appearance="outline">
+                    <mat-label>Titulo</mat-label>
+                    <input type="text" matInput formControlName="title" placeholder="Ingrese el titulo de la categoria">
+                  </mat-form-field>
+                  <mat-form-field class="w100" appearance="outline">
+                    <mat-label>Descripcion</mat-label>
+                    <textarea type="text" matInput formControlName="description" rows="10" placeholder="Ingrese la descripcion de la categoria"></textarea>
+                  </mat-form-field>
+                </div>
+                <div class="col-6">
+                  <mat-form-field class="w100" appearance="outline">
+                    <mat-label>Puntos maximos</mat-label>
+                    <input type="number" matInput formControlName="maximumPoints" placeholder="Ingrese los puntos maximos">
+                  </mat-form-field>
+
+                  <mat-form-field class="w100" appearance="outline">
+                    <mat-label>Numero de preguntas</mat-label>
+                    <input type="number" matInput formControlName="numberQuestionnaires" placeholder="Ingrese el numero de preguntas">
+                  </mat-form-field>
+
+                  <mat-form-field class="w100" appearance="outline">
+                    <mat-label>Seleccione la categoria</mat-label>
+                    <select matNativeControl formControlName="categoryId" >
+                      <option value="" selected></option>
+                      <option [value]="category.categoryId" *ngFor="let category of categories">{{category.categoryId}} - {{category.title}}</option>
+                    </select>
+                  </mat-form-field>
+
+                  <mat-slide-toggle formControlName="state" class="mt20 ml20 mb20" [checked]="true" color="primary">
+                    Estado del test
+                  </mat-slide-toggle>
+                </div>
+              </div>
+            </div>
+            
+            
+
+            <div class="container text-center mb10">
+              <button mat-raised-button color="primary" [disabled]="disabledSaveButton">Guargar</button>
+              <button type="button" mat-raised-button class="ml20" color="disabled" routerLink="/admin/tests">Volver</button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

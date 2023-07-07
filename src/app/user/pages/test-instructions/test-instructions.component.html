@@ -1,0 +1,45 @@
+<div class="bootstrap-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <mat-card class="mt20">
+          <mat-card-header>
+            <mat-card-title>
+              <h1>Lea detinidamente las siguientes instrucciones</h1>
+            </mat-card-title>
+            <mat-card-subtitle>
+              Instrucciones
+            </mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content *ngIf="test" class="mt20">
+            <h2>{{test.title}}</h2>
+            <p>{{test.description}}</p>
+            <mat-divider></mat-divider>
+            <br>
+            <h2>Instrucciones Importantes</h2>
+            <ul>
+              <li>Este cuestionario es solo de caracter practico</li>
+              <li>Tienes exactamente <b>{{test.numberQuestionnaires! * 2}} minutos</b></li>
+              <li>No hay limites de intentos, puedes intentarlo las veces que quieras ✔</li>
+              <li>Cada pregunta tiene un valor de <b>{{test.maximumPoints! / test.numberQuestionnaires!}} puntos</b></li>
+            </ul>
+            <mat-divider></mat-divider>
+            <br>
+            <h2>Intentos del test</h2>
+            <ul>
+              <li>Presione el boton de <b>Empezar</b> para iniciar el test</li>
+              <li>No podras reanudar el test si este es interrumpido por cualquier motivo</li>
+              <li>Haga click en <b>Enviar</b> para enviar las respuestas del test</li>
+              <li>El informe del examen se genera automaticamente en formato PDF</li>
+            </ul>
+        </mat-card-content>
+        <mat-card-actions>
+          <div class="container text-center mt20 mb20">
+            <button mat-raised-button color="primary" (click)="startTest()">Empezar</button>
+          </div>
+        </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

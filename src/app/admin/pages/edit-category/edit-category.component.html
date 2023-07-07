@@ -1,0 +1,27 @@
+<mat-card>
+  <mat-card-title class="container text-center mt20 mb20">
+    <h1>Editar Categoria</h1>
+  </mat-card-title>
+  <mat-card-content>
+    <div class="bootstrap-wrapper">
+      <div class="row">
+        <div class="col-md-8 offset-md-2">
+          <form [formGroup]="categoryForm" (ngSubmit)="editCategory()">
+            <mat-form-field class="w100" appearance="outline">
+              <mat-label>Titulo</mat-label>
+              <input type="text" matInput formControlName="title" placeholder="Ingrese el titulo del test">
+            </mat-form-field>
+            <mat-form-field class="w100" appearance="outline">
+              <mat-label>Descripcion</mat-label>
+              <textarea type="text" matInput formControlName="description" rows="10" placeholder="Ingrese la descripcion del test"></textarea>
+            </mat-form-field>
+            <div class="container text-center mb10">
+              <button mat-raised-button color="primary" [disabled]="disabledSaveButton">Guardar</button>
+              <button type="button" mat-raised-button class="ml20" color="disabled" routerLink="/admin/categories">Volver</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

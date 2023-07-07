@@ -1,0 +1,55 @@
+<mat-card>
+  <mat-card-title class="container text-center mt20 mb20">
+    <h1>Editar Cuestionario</h1>
+  </mat-card-title>
+  <mat-card-content>
+    <div class="bootstrap-wrapper">
+      <div class="row">
+        <div class="col-md-8 offset-md-2">
+          <form [formGroup]="questionaryForm" (ngSubmit)="editQuestionary()">
+            <mat-form-field class="w100" appearance="outline">
+              <mat-label>Pregunta</mat-label>
+              <input type="text" matInput formControlName="ask" placeholder="Ingrese la pregunta del cuestionario">
+            </mat-form-field>
+            <mat-form-field class="w100" appearance="outline">
+              <mat-label>Opcion 1</mat-label>
+              <input type="text" matInput formControlName="option1" rows="10" placeholder="Ingrese la opcion 1">
+            </mat-form-field>
+            <mat-form-field class="w100" appearance="outline">
+              <mat-label>Opcion 2</mat-label>
+              <input type="text" matInput formControlName="option2" rows="10" placeholder="Ingrese la opcion 2">
+            </mat-form-field>
+            <mat-form-field class="w100" appearance="outline">
+              <mat-label>Opcion 3</mat-label>
+              <input type="text" matInput formControlName="option3" rows="10" placeholder="Ingrese la opcion 3">
+            </mat-form-field>
+            <mat-form-field class="w100" appearance="outline">
+              <mat-label>Opcion 4</mat-label>
+              <input type="text" matInput formControlName="option4" rows="10" placeholder="Ingrese la opcion 4">
+            </mat-form-field>
+            <mat-form-field class="w100" appearance="outline">
+              <mat-label>Respuesta</mat-label>
+              <input type="text" matInput formControlName="answer" rows="10" placeholder="Ingrese la respuesta correcta">
+            </mat-form-field>
+            <mat-form-field class="w100" appearance="outline">
+              <mat-label>Imagen</mat-label>
+              <input type="text" matInput formControlName="image" rows="10" placeholder="Ingrese el nombre la imagen">
+            </mat-form-field>
+
+            <mat-form-field class="w100" appearance="outline">
+              <mat-label>Seleccione el test</mat-label>
+              <select matNativeControl formControlName="testId" >
+                <option value="" selected>--- Seleccione ---</option>
+                <option [value]="test.testId" *ngFor="let test of tests">{{test.testId}} - {{test.title}}</option>
+              </select>
+            </mat-form-field>
+            <div class="container text-center mb10">
+              <button mat-raised-button color="primary" [disabled]="disabledSaveButton">Guardar</button>
+              <button type="button" mat-raised-button class="ml20" color="disabled" routerLink="/admin/questionnaires">Volver</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,55 @@
+<mat-card>
+  <mat-card-title>
+    <h1 class="mt20 ml20">Perfil de usuario</h1>
+  </mat-card-title>
+  <mat-card-content>
+    <div class="bootstrap-wrapper">
+      <div class="container">
+        <div class="text-center">
+          <img src="../../../../assets/profile_picture.png" width="300" height="300" alt="profile" class="profile-img">
+          <h2>{{user.username | uppercase}}</h2>
+          <div class="row">
+            <div class="col-md-10 offset-md-1">
+              <table *ngIf="user" class="table text-center">
+                <tr>
+                  <th>Username</th>
+                  <td>{{user.username | uppercase}}</td>
+                </tr>
+                <tr>
+                  <th>Nombre Completo</th>
+                  <td>{{user.firstName}} {{user.lastName}}</td>
+                </tr>
+                <tr>
+                  <th>Telefono</th>
+                  <td>{{user.phoneNumber}}</td>
+                </tr>
+                <tr>
+                  <th>Telefono</th>
+                  <td>{{user.email}}</td>
+                </tr>
+                <tr>
+                  <th>Rol</th>
+                  <td>{{user.authorities[0].authority }}</td>
+                </tr>
+                <tr>
+                  <th>Estado</th>
+                  <td>{{user.state ? 'Activo' : 'Inactivo'}}</td>
+                </tr>
+  
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <mat-card-actions>
+      <div class="container">
+        <div class="text-center">
+          <button mat-raised-button color="primary" class="mr10">Actualizar</button>
+          <button mat-raised-button color="accent">Compartir</button>
+        </div>
+      </div>
+    </mat-card-actions>
+  </mat-card-content>
+</mat-card>
+

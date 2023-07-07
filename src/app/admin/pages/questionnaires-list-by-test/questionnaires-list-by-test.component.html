@@ -1,0 +1,69 @@
+<div class="container">
+  <div class="row">
+    <div class="col-8">
+      <mat-card-title class="ml20 mt20">
+        <h1>Cuestionarios de {{testTitle}} </h1>
+      </mat-card-title>
+    </div>
+    <div class="col-4">
+      <div class="container text-center mt20">
+        <button mat-raised-button color="accent" class="mb20" [routerLink]="['/admin/add-questionary-by-test', testId, testTitle]">
+          <mat-icon>add</mat-icon>          
+          Agregar Cuestionario a {{testTitle}}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-wrapper">
+  <div class="row">
+    <div class="col-md-12">
+
+    </div>
+  </div>
+</div>
+
+<mat-card class="mt10" *ngFor="let questionary of questionnaires; let i = index">
+    
+  <mat-card-content>
+    <p>
+      <b>{{i + 1}})</b><span class="ml10" [innerHTML]="questionary.ask"></span>
+    </p>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6">
+          <p> <b>A) </b> {{questionary.option1}}</p>
+        </div>
+        <div class="col-md-6">
+          <p><b>B) </b> {{questionary.option2}}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <p><b>C) </b> {{questionary.option3}}</p>
+        </div>
+        <div class="col-md-6">
+          <p><b>D) </b> {{questionary.option4}}</p>
+        </div>
+      </div>
+      <mat-divider></mat-divider>
+      <p class="mt20">
+        <b>Respuesta correcta: </b> {{questionary.answer}}
+      </p>
+      <mat-divider></mat-divider>
+      <mat-card-actions class="mt20">
+        <button mat-button color="primary" [routerLink]="['/admin/edit-questionary/', questionary.questionaryId]">
+          <mat-icon>edit</mat-icon>
+          Editar
+        </button>
+        <button mat-button color="warn" class="ml20" (click)="deleteQuestionary(questionary.questionaryId!)">
+          <mat-icon>delete</mat-icon>
+          Eliminar
+        </button>
+      </mat-card-actions>
+    </div>
+
+  </mat-card-content>
+  
+</mat-card>

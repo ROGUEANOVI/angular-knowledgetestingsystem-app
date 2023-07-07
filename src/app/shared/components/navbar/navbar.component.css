@@ -1,0 +1,40 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+.navbar-title{
+  cursor: pointer;
+}
+
+.link{
+  text-decoration: none;
+  color: white;
+}
+
+.btn-login{
+  background-color: rgb(5, 224, 170);
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 10px;
+  padding: 10px;
+  cursor: pointer;
+}
+.btn-login:hover{
+  background-color: rgb(62, 255, 207);
+}
+
+.btn-signup{
+  background-color: rgb(173, 5, 224);
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 10px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.btn-signup:hover{
+  background-color: rgb(205, 48, 253);
+}
+
+.link-profile{
+  cursor: pointer;
+}

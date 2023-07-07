@@ -1,0 +1,61 @@
+<div class="bootstrap-wrapper">
+  <div class="container">
+    <div class="row mt20">
+      <div class="col-md-6 offset-md-3">
+
+        <mat-card class="mb20">
+          <div class="container text-center">
+
+            <img class="mt10" src="../../../assets/register.png" alt="user" width="100" height="100">
+          
+            <h1 class="text-center">Registro de usuario</h1>
+            
+            <form [formGroup]="registerForm" (submit)="register()">
+              <mat-form-field class="full-width" appearence="outline">
+                <mat-label>Nombre</mat-label>
+                <input type="text" matInput formControlName="firstName" placeholder="Ingrese su nombre">
+              </mat-form-field>
+    
+              <mat-form-field class="full-width" appearence="outline">
+                <mat-label>Apellido</mat-label>
+                <input type="text" matInput formControlName="lastName" placeholder="Ingrese su apellido">
+              </mat-form-field>
+    
+              <mat-form-field class="full-width" appearence="outline">
+                <mat-label>Telefono</mat-label>
+                <input type="tel" matInput formControlName="phoneNumber" placeholder="Ingrese el telefono" autocomplete="tel">
+              </mat-form-field>
+    
+              <mat-form-field class="full-width" appearence="outline">
+                <mat-label>Email</mat-label>
+                <input type="email" matInput formControlName="email" placeholder="Ingrese el email" autocomplete="email">
+              </mat-form-field>
+    
+              <mat-form-field class="full-width" appearence="outline">
+                <mat-label>Nombre de usuario</mat-label>
+                <input type="text" matInput formControlName="username" placeholder="Ingrese el nombre de usuario" autocomplete="username">
+              </mat-form-field>
+    
+              <mat-form-field class="full-width" appearence="outline">
+                <mat-label>Contraseña</mat-label>
+                <input [type]="hidePassword ? 'password' : 'text'" matInput formControlName="password" placeholder="Ingrese la contraseña">
+                <mat-icon matSuffix (click)="hidePassword = !hidePassword">{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </mat-form-field>
+    
+              <mat-form-field class="full-width" appearence="outline">
+                <mat-label>Foto de perfil</mat-label>
+                <input matInput formControlName="profile" placeholder="Ingrese ejemplo user.png">
+              </mat-form-field>
+              
+              <div class="container text-center mb10">
+                <button mat-raised-button color="primary" [disabled]="disabledSaveButton">Registrar</button>
+                <button type="button" mat-raised-button class="ml20" color="disabled" routerLink="/login">Volver</button>
+              </div>
+            </form>
+          </div>
+        </mat-card>
+          
+      </div>
+    </div>
+  </div>
+</div>
